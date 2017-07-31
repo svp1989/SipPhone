@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "Sip phone",
+  "version": "1.1",
+  "icons": {
+    "48": "icons/phone_active.svg",
+    "96": "icons/phone_active.svg"
+  },
+  "browser_action": {
+    "default_icon": "icons/phone_deactive.svg",
+    "default_title": "Не активен!"
+  },
+  "applications": {
+    "gecko": {
+      "id": "skvor_vit@mail.ru"
+    }
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' 'unsafe-eval';",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/template.js",
+        "js/page_content.js"
+      ]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html"
+  },
+  "permissions": [
+    "<all_urls>",
+    "tabs",
+    "activeTab",
+    "runtime",
+    "storage",
+    "webRequest",
+    "webNavigation",
+    "notifications"
+  ],
+  "background": {
+    "scripts": [
+      "js/SIPml-api.js",
+      "js/SIPml.js",
+      "js/client.js",
+      "js/background.js"
+    ]
+  }
+}
